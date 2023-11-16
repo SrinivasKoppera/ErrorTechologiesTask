@@ -61,6 +61,7 @@ app.post("/file", upload.single("file"), async (req, res) => {
     console.log(req.body);
     const document = await File.findOne({ name: req.file.originalname });
     if (req.body.replace) {
+      console.log("split::", document.url.split("/"));
       const filePath = `${process.env.PWD}/public/${
         document.url.split("/")[1]
       }`;
@@ -97,6 +98,9 @@ app.delete(`/file/:id`, async (req, res) => {
     const deleteItemId = req.params.id;
     const file = await File.findById(deleteItemId);
     if (file) {
+      console.log("file::", file);
+      console.log("split::", document.url.split("/"));
+
       const filePath = `${process.env.PWD}/public/${file.url.split("/")[1]}`;
       console.log("filePath: ", filePath);
 
