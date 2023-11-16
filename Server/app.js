@@ -108,9 +108,7 @@ app.delete(`/file/:id`, async (req, res) => {
       });
       await File.deleteOne({ _id: file._id });
 
-      res
-        .status(200)
-        .json({ message: "File Deleted Successfully", deleteFile });
+      res.status(200).json({ message: "File Deleted Successfully" });
     } else {
       return res.status(404).json({ message: "File Not Found" });
     }
