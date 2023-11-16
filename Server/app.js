@@ -25,6 +25,9 @@ const upload = multer({ storage: storage });
 const app = express();
 app.use(express.json());
 app.use(cors());
+if (!fs.existsSync("./public")) {
+  fs.mkdirSync("./public");
+}
 app.use(express.static("public"));
 
 const initializeDBAndServer = async () => {
