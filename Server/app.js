@@ -5,6 +5,8 @@ const cors = require("cors");
 const File = require("./model");
 const multer = require("multer");
 const mime = require("mime-types");
+require("dotenv").config();
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public");
@@ -22,12 +24,9 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
 
-const uri =
-  "mongodb+srv://jaanusaragandla:no0Nz8iYIhMpuOIZ@errortaskdb.wffhl1z.mongodb.net/?retryWrites=true&w=majority";
-
 const initializeDBAndServer = async () => {
   try {
-    await mongoose.connect(uri).then(() => {
+    await mongoose.connect(process.env.mongodbUrl).then(() => {
       console.log("You successfully connected to MongoDB! Atlas");
     });
   } catch (error) {
@@ -36,7 +35,7 @@ const initializeDBAndServer = async () => {
 };
 
 initializeDBAndServer();
-app.listen(3000, () => {
+app.listen(process.env.port, () => {
   console.log(`Server is Running at http://localhost/3000`);
 });
 
@@ -59,7 +58,7 @@ app.post("/file", upload.single("file"), async (req, res) => {
     }
     const fileObj = {
       name: req.file.originalname,
-      url: `https://file-uploader-back-end.onrender.com/${req.file.filename}`,
+      url: `${process.env.hostUrl}/${req.file.filename}`,
     };
     const file = await File.create(fileObj);
     res.status(200).json({ message: `file uploaded successfully`, file });
