@@ -63,7 +63,7 @@ app.post("/file", upload.single("file"), async (req, res) => {
     if (req.body.replace) {
       console.log("split::", document.url.split("/"));
       const filePath = `${process.env.PWD}/public/${
-        document.url.split("/")[1]
+        document.url.split("/")[document.url.split("/").length - 1]
       }`;
       console.log("filePath1: ", filePath);
       fs.unlink(filePath, (err) => {
@@ -101,7 +101,9 @@ app.delete(`/file/:id`, async (req, res) => {
       console.log("file::", file);
       console.log("split::", document.url.split("/"));
 
-      const filePath = `${process.env.PWD}/public/${file.url.split("/")[1]}`;
+      const filePath = `${process.env.PWD}/public/${
+        file.url.split("/")[file.url.split("/").length - 1]
+      }`;
       console.log("filePath: ", filePath);
 
       fs.unlink(filePath, (err) => {
