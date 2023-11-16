@@ -6,8 +6,8 @@ createUnorderList.setAttribute("class", "group-of-files");
 const createNoFilesContainer = document.createElement("div");
 createNoFilesContainer.setAttribute("class", "no-files-container");
 
-// const serverUrl = "https://file-uploader-back-end.onrender.com";
-const serverUrl = "http://localhost:3000";
+const serverUrl = "https://file-uploader-back-end.onrender.com";
+// const serverUrl = "http://localhost:3000";
 
 const noFilesContainerFun = () => {
   const noFilesHeading = document.createElement("h1");
