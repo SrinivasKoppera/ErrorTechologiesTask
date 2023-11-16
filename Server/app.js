@@ -59,7 +59,7 @@ app.post("/file", upload.single("file"), async (req, res) => {
     }
     const fileObj = {
       name: req.file.originalname,
-      url: `http://localhost:3000/${req.file.filename}`,
+      url: `https://file-uploader-back-end.onrender.com/file/${req.file.filename}`,
     };
     const file = await File.create(fileObj);
     res.status(200).json({ message: `file uploaded successfully`, file });
