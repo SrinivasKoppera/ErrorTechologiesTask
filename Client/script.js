@@ -6,6 +6,9 @@ createUnorderList.setAttribute("class", "group-of-files");
 const createNoFilesContainer = document.createElement("div");
 createNoFilesContainer.setAttribute("class", "no-files-container");
 
+// const serverUrl = "https://file-uploader-back-end.onrender.com";
+const serverUrl = "http://localhost:3000";
+
 const noFilesContainerFun = () => {
   const noFilesHeading = document.createElement("h1");
   noFilesHeading.textContent = "No Files In Your Database";
@@ -18,7 +21,7 @@ const noFilesContainerFun = () => {
 
 const deleteFileFun = async (id) => {
   try {
-    const url = `https://file-uploader-back-end.onrender.com/file/${id}`;
+    const url = `${serverUrl}/file/${id}`;
     const option = {
       method: "DELETE",
     };
@@ -55,7 +58,7 @@ const showFilesContainer = (filesArray) => {
 
 const createFileInDB = async (formData) => {
   try {
-    const url = "https://file-uploader-back-end.onrender.com/file";
+    const url = `${serverUrl}/file`;
     const option = {
       method: "POST",
       body: formData,
@@ -77,9 +80,7 @@ formSubmissionElement.addEventListener("submit", async (event) => {
 
 const getFilesFromDB = async () => {
   try {
-    const response = await fetch(
-      "https://file-uploader-back-end.onrender.com/file"
-    );
+    const response = await fetch(`${serverUrl}/file`);
     const data = await response.json();
     console.log("This is from DB", data.files);
     if (data.files.length === 0) {

@@ -5,15 +5,18 @@ const cors = require("cors");
 const File = require("./model");
 const multer = require("multer");
 const mime = require("mime-types");
+const fs = require("fs");
 require("dotenv").config();
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
+    console.log("Fist cb");
     cb(null, "public");
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const extension = mime.extension(file.mimetype);
+    console.log("Second CB");
     cb(null, file.fieldname + "-" + uniqueSuffix + `.${extension}`);
   },
 });
@@ -52,16 +55,30 @@ app.get("/file", async (req, res) => {
 app.post("/file", upload.single("file"), async (req, res) => {
   try {
     console.log("File: ", req.file);
-    const isExits = await File.findOne({ name: req.file.originalname });
-    if (isExits) {
-      return res.status(400).json({ message: "given file is already exits" });
+    console.log(req.body);
+    const document = await File.findOne({ name: req.file.originalname });
+    if (req.body.replace) {
+      fs.unlink(`./public/${document.url.split("/")[1]}`, (err) => {
+        if (err) {
+          console.log("Error while deleting file", err);
+        }
+      });
+      document.url = `${process.env.hostUrl}/${req.file.filename}`;
+      await document.save();
+      res
+        .status(200)
+        .json({ message: "file replaced successfully", file: document });
+    } else {
+      if (document) {
+        return res.status(400).json({ message: "given file is already exits" });
+      }
+      const fileObj = {
+        name: req.file.originalname,
+        url: `${process.env.hostUrl}/${req.file.filename}`,
+      };
+      const file = await File.create(fileObj);
+      res.status(200).json({ message: `file uploaded successfully`, file });
     }
-    const fileObj = {
-      name: req.file.originalname,
-      url: `${process.env.hostUrl}/${req.file.filename}`,
-    };
-    const file = await File.create(fileObj);
-    res.status(200).json({ message: `file uploaded successfully`, file });
   } catch (error) {
     console.log(`Uploaded File Error: ${error}`);
     res.status(500).json({ message: "Someting went wrong" });
@@ -71,11 +88,21 @@ app.post("/file", upload.single("file"), async (req, res) => {
 app.delete(`/file/:id`, async (req, res) => {
   try {
     const deleteItemId = req.params.id;
-    const deleteFile = await File.findByIdAndDelete(deleteItemId);
-    if (!deleteFile) {
+    const file = await File.findById(deleteItemId);
+    if (file) {
+      fs.unlink(`./public/${file.url.split("/")[1]}`, (err) => {
+        if (err) {
+          console.log("Error while deleting file", err);
+        }
+      });
+      await file.remove();
+
+      res
+        .status(200)
+        .json({ message: "File Deleted Successfully", deleteFile });
+    } else {
       return res.status(404).json({ message: "File Not Found" });
     }
-    res.status(200).json({ message: "File Deleted Successfully", deleteFile });
   } catch (error) {
     console.log("Deleting File Error : ", error);
     res.status(500).json({ message: "Something went wrong" });
