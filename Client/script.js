@@ -63,7 +63,6 @@ const createFileInDB = async (formData) => {
     const response = await fetch(url, option);
     const data = await response.json();
     alert(data.message);
-    filesContainer.appendChild(dbResp);
   } catch (error) {
     console.log("Upload file Error: ", error);
   }
