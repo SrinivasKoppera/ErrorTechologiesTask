@@ -106,7 +106,7 @@ app.delete(`/file/:id`, async (req, res) => {
           console.log("Error while deleting file", err);
         }
       });
-      await file.remove();
+      await File.deleteOne({ _id: file._id });
 
       res
         .status(200)
