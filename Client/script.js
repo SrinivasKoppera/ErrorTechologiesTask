@@ -18,7 +18,7 @@ const noFilesContainerFun = () => {
 
 const deleteFileFun = async (id) => {
   try {
-    const url = `http://localhost:3000/file/${id}`;
+    const url = `https://file-uploader-back-end.onrender.com/file/${id}`;
     const option = {
       method: "DELETE",
     };
@@ -55,7 +55,7 @@ const showFilesContainer = (filesArray) => {
 
 const createFileInDB = async (formData) => {
   try {
-    const url = "http://localhost:3000/file";
+    const url = "https://file-uploader-back-end.onrender.com/file";
     const option = {
       method: "POST",
       body: formData,
@@ -77,7 +77,9 @@ formSubmissionElement.addEventListener("submit", async (event) => {
 
 const getFilesFromDB = async () => {
   try {
-    const response = await fetch("http://localhost:3000/file");
+    const response = await fetch(
+      "https://file-uploader-back-end.onrender.com/file"
+    );
     const data = await response.json();
     console.log("This is from DB", data.files);
     if (data.files.length === 0) {
