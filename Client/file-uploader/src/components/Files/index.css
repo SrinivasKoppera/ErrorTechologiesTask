@@ -1,0 +1,135 @@
+.main-container {
+  background-color: #b9b7bd;
+  min-height: 100vh;
+  max-height: 100%;
+  margin: 0px;
+}
+.no-data-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .no-data-container {
+    height: 100vh;
+  }
+  .go-to-upload-btn {
+    margin-bottom: 0px;
+  }
+}
+.no-data-image {
+  width: 40%;
+}
+@media screen and (min-width: 768px) {
+  .no-data-image {
+    margin-top: 1.5rem;
+    border-radius: 5px;
+  }
+}
+.no-data-description {
+  font-size: 20px;
+  font-weight: 800;
+  color: dimgrey;
+}
+.go-to-upload-btn {
+  height: 32px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.go-to-upload-btn:hover {
+  opacity: 1;
+}
+/* Failure Container Style */
+.failure-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 30px;
+}
+
+@media (min-width: 768px) {
+  .failure-container {
+    height: 80vh;
+  }
+}
+.failure-image {
+  width: 350px;
+  margin-bottom: 20px;
+}
+.failure-heading {
+  font-size: 30px;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+@media screen and (max-width: 20px) {
+  .failure-heading {
+    font-size: 20px;
+  }
+}
+.failure-description {
+  color: #36383b;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.jobs-failure-button {
+  padding: 6px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background-color: #4f46e5;
+  cursor: pointer;
+}
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.success-files-container {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.success-files-lists {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  /* margin: 0px; */
+  list-style-type: none;
+}
+.files-heading {
+  text-align: center;
+  margin: 0px;
+  padding: 1rem;
+  color: #ff6b00;
+  font-size: 35px;
+  font-weight: 900;
+  text-shadow: 1px 1px 2px #000;
+}
+@media screen and (max-width: 768px) {
+  .files-heading {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .success-files-lists {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

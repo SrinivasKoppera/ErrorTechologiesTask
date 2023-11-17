@@ -1,0 +1,121 @@
+.bg-container {
+  background-image: url("../../images/bodybackground2.jpg");
+  height: 100vh;
+  background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+}
+.suggetion {
+  color: rgb(113, 103, 103);
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+}
+@media screen and (max-width: 768px) {
+  .suggetion {
+    font-size: 10px;
+  }
+}
+.form-container {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 80vw;
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: aqua; */
+  margin-top: 4rem;
+}
+@media screen and (min-width: 768px) {
+  .form-container {
+    height: 40vh;
+  }
+}
+.document-heading {
+  /* color: rgb(201, 208, 201); */
+  color: #ff8c00;
+  text-shadow: 2px 1px 1px #0e0d0d;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+@media screen and (max-width: 768px) {
+  .document-heading {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ff8c00;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+  .file-input-field {
+    margin: 1rem 0rem;
+  }
+}
+.file-label {
+  font-weight: 600;
+  color: #11324d;
+  margin-right: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+@media screen and (max-width: 768px) {
+  .file-label {
+    font-size: 12px;
+  }
+}
+.file-input-field {
+  border: 1px solid #b0a8a8;
+  padding: 0.4rem;
+  border-radius: 5px;
+  background-color: bisque;
+  cursor: pointer;
+  position: relative;
+}
+.check-box-label {
+  color: #11324d;
+  font-size: 14px;
+  font-weight: 600;
+}
+.upload-btn {
+  height: 32px;
+  width: 70px;
+  border: none;
+  background-color: #ff8c00;
+  border-radius: 5px;
+  color: #008080;
+  font-weight: 700;
+  cursor: pointer;
+}
+.upload-btn:hover {
+  color: #fff;
+  transition: 900ms;
+}
+@media screen and (max-width: 768px) {
+  .check-box {
+    margin-top: 10px;
+  }
+  .upload-btn {
+    background-color: rgb(59, 112, 5);
+    color: #fff;
+    margin-top: 10px;
+  }
+  .check-box-label {
+    font-size: 12px;
+  }
+}

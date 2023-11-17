@@ -42,7 +42,7 @@ const initializeDBAndServer = async () => {
 
 initializeDBAndServer();
 app.listen(process.env.port, () => {
-  console.log(`Server is Running at http://localhost/3000`);
+  console.log(`Server is Running at http://localhost/${process.env.port}`);
 });
 
 app.get("/file", async (req, res) => {
