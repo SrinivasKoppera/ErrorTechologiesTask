@@ -20,11 +20,12 @@
 }
 .no-data-image {
   width: 40%;
+  border-radius: 5px;
 }
+
 @media screen and (min-width: 768px) {
   .no-data-image {
     margin-top: 1.5rem;
-    border-radius: 5px;
   }
 }
 .no-data-description {
