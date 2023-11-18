@@ -5,7 +5,9 @@ import { FiLogOut } from "react-icons/fi";
 import companyLogo from "../../images/error-type-logo-icon-free-vector.jpg";
 import "./index.css";
 
-const Header = () => {
+const Header = (props) => {
+  const { gettingFilesFromDB } = props;
+
   const deleteAllFilesFromDB = async () => {
     try {
       // const url = "http://localhost:3000/file";
@@ -13,8 +15,8 @@ const Header = () => {
       const option = { method: "DELETE" };
       const response = await fetch(url, option);
       const data = await response.json();
-      // console.log(data.message);
       alert(data.message);
+      gettingFilesFromDB();
     } catch (error) {
       console.log("Deleting Files Error: ", error);
     }

@@ -135,7 +135,7 @@ const Files = () => {
 
   return (
     <div>
-      <Header />
+      <Header gettingFilesFromDB={gettingFilesFromDB} />
       <div className="main-container">{renderFilesView()}</div>
     </div>
   );
