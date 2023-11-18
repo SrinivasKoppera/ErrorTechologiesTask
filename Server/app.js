@@ -121,7 +121,7 @@ app.delete(`/file/:id`, async (req, res) => {
 app.delete("/file", async (req, res) => {
   try {
     const filesExits = await File.find();
-    if (filesExits.length === 0) {
+    if (filesExits.length !== 0) {
       await File.deleteMany();
       res.status(200).json({ message: "All files deleted successfully" });
     } else {

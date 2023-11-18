@@ -6,6 +6,18 @@ import companyLogo from "../../images/error-type-logo-icon-free-vector.jpg";
 import "./index.css";
 
 const Header = () => {
+  const deleteAllFilesFromDB = async () => {
+    try {
+      const url = "https://file-uploader-back-end.onrender.com/file";
+      const option = { method: "DELETE" };
+      const response = await fetch(url, option);
+      const data = await response.json();
+      console.log(data.message);
+    } catch (error) {
+      console.log("Deleting Files Error: ", error);
+    }
+  };
+
   return (
     <div className="header-container">
       <Link to="/">
@@ -23,7 +35,11 @@ const Header = () => {
           </li>
         </Link>
         <li>
-          <button type="button" className="sm-screen-logout-button">
+          <button
+            type="button"
+            className="sm-screen-logout-button"
+            onClick={deleteAllFilesFromDB}
+          >
             <FiLogOut size="30" color="#ffffff" />
           </button>
         </li>
@@ -36,7 +52,11 @@ const Header = () => {
           <li>Files</li>
         </Link>
       </ul>
-      <button type="button" className="lg-screen-logout-button">
+      <button
+        type="button"
+        className="lg-screen-logout-button"
+        onClick={deleteAllFilesFromDB}
+      >
         Logout
       </button>
     </div>
