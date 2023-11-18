@@ -8,6 +8,7 @@ import "./index.css";
 const Header = () => {
   const deleteAllFilesFromDB = async () => {
     try {
+      // const url = "http://localhost:3000/file";
       const url = "https://file-uploader-back-end.onrender.com/file";
       const option = { method: "DELETE" };
       const response = await fetch(url, option);
