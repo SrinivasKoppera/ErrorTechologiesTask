@@ -13,7 +13,8 @@ const Header = () => {
       const option = { method: "DELETE" };
       const response = await fetch(url, option);
       const data = await response.json();
-      console.log(data.message);
+      // console.log(data.message);
+      alert(data.message);
     } catch (error) {
       console.log("Deleting Files Error: ", error);
     }
