@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { CgMenuHotdog } from "react-icons/cg";
-import { FiLogOut } from "react-icons/fi";
+import { MdDeleteSweep } from "react-icons/md";
 import companyLogo from "../../images/error-type-logo-icon-free-vector.jpg";
 import "./index.css";
 
@@ -45,7 +45,7 @@ const Header = (props) => {
               className="sm-screen-logout-button"
               onClick={deleteAllFilesFromDB}
             >
-              <FiLogOut size="30" color="#ffffff" />
+              <MdDeleteSweep size="30" color="#ffffff" />
             </button>
           </li>
         )}
