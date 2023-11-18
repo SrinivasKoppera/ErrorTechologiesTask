@@ -6,7 +6,7 @@ import companyLogo from "../../images/error-type-logo-icon-free-vector.jpg";
 import "./index.css";
 
 const Header = (props) => {
-  const { gettingFilesFromDB } = props;
+  const { gettingFilesFromDB, showDeleteBtn } = props;
 
   const deleteAllFilesFromDB = async () => {
     try {
@@ -38,15 +38,17 @@ const Header = (props) => {
             <CgMenuHotdog size="30" color="#ffffff" />
           </li>
         </Link>
-        <li>
-          <button
-            type="button"
-            className="sm-screen-logout-button"
-            onClick={deleteAllFilesFromDB}
-          >
-            <FiLogOut size="30" color="#ffffff" />
-          </button>
-        </li>
+        {showDeleteBtn && (
+          <li>
+            <button
+              type="button"
+              className="sm-screen-logout-button"
+              onClick={deleteAllFilesFromDB}
+            >
+              <FiLogOut size="30" color="#ffffff" />
+            </button>
+          </li>
+        )}
       </ul>
       <ul className="lg-screen-nav-links">
         <Link to="/" className="nav-link">
@@ -56,13 +58,15 @@ const Header = (props) => {
           <li>Files</li>
         </Link>
       </ul>
-      <button
-        type="button"
-        className="lg-screen-logout-button"
-        onClick={deleteAllFilesFromDB}
-      >
-        Logout
-      </button>
+      {showDeleteBtn && (
+        <button
+          type="button"
+          className="lg-screen-logout-button"
+          onClick={deleteAllFilesFromDB}
+        >
+          Delete all
+        </button>
+      )}
     </div>
   );
 };

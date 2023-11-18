@@ -16,9 +16,14 @@ const filesAPIConstants = {
 const Files = () => {
   const [filesArray, updateFilesArray] = useState([]);
   const [APIStatus, updateAPIStatus] = useState(filesAPIConstants.initial);
+  const [showDeleteBtn, updateShowDeleteBtn] = useState(true);
 
   useEffect(() => {
     gettingFilesFromDB();
+    updateShowDeleteBtn(true);
+    return () => {
+      updateShowDeleteBtn(false);
+    };
   }, []);
 
   const renderLoadingView = () => (
@@ -135,7 +140,10 @@ const Files = () => {
 
   return (
     <div>
-      <Header gettingFilesFromDB={gettingFilesFromDB} />
+      <Header
+        gettingFilesFromDB={gettingFilesFromDB}
+        showDeleteBtn={showDeleteBtn}
+      />
       <div className="main-container">{renderFilesView()}</div>
     </div>
   );
